@@ -21,7 +21,9 @@ const TodoItem = ({ name, id, someProp }) => {
       >
         delete
       </button>
-      <button onClick={editTodo}>edit</button>
+      <button onClick={()=> {
+        editTodo(name, id, someProp)
+      }}>edit</button>
     </div>
   );
 };

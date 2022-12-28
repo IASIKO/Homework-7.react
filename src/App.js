@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import AddTodo from "./AddTodo";
 import "./App.css";
 import TodoListComponent from "./TodoList";

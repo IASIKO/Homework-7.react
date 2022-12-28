@@ -1,13 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTodoContext } from "./TodoListContext";
 
 const AddTodo = () => {
   const [formValues, setFormValues] = useState({ name: "", someProp: "" });
-  const { AddTodo } = useTodoContext();
+  const { addTodo , selectedTodo} = useTodoContext();
   const onSubmit = (event) => {
     event.preventDefault();
-    AddTodo({ ...formValues, id: new Date().toString() });
+    addTodo({ ...formValues, id: new Date().toString() });
+    setFormValues({name:"", someProp:""})
   };
+
+    useEffect(() => {
+      if(selectedTodo.name || selectedTodo.someProp){
+        setFormValues(selectedTodo)
+      }
+    }, [selectedTodo])
+
 
   const onInputChange = (event) => {
     const { name, value } = event.target;
