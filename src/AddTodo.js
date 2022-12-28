@@ -3,15 +3,16 @@ import { useTodoContext } from "./TodoListContext";
 
 const AddTodo = () => {
   const [formValues, setFormValues] = useState({ name: "", someProp: "" });
-  const { addTodo , selectedTodo} = useTodoContext();
+  const { addTodo , selectedTodo, setSelectedTodo} = useTodoContext();
   const onSubmit = (event) => {
     event.preventDefault();
     addTodo({ ...formValues, id: new Date().toString() });
     setFormValues({name:"", someProp:""})
+    setSelectedTodo(null)
   };
 
     useEffect(() => {
-      if(selectedTodo.name || selectedTodo.someProp){
+      if(selectedTodo){
         setFormValues(selectedTodo)
       }
     }, [selectedTodo])
@@ -36,7 +37,7 @@ const AddTodo = () => {
         onChange={onInputChange}
         value={formValues.someProp}
       />
-      <button></button>
+      <button>ADD</button>
     </form>
   );
 };

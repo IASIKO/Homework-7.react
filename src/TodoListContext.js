@@ -7,11 +7,7 @@ export const useTodoContext = () => useContext(TodoListContext);
 export const TodoListProvider = ({ children }) => {
   const [todoList, setTodoList] = useState([]);
 
-  const [selectedTodo, setSelectedTodo] = useState({
-    name: "",
-    someProps: "",
-    id: "",
-  });
+  const [selectedTodo, setSelectedTodo] = useState(null);
 
   const addTodo = (todo) => {
     setTodoList((prevTodolist) => [...prevTodolist, todo]);
